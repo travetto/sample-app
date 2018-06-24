@@ -1,12 +1,13 @@
 import * as assert from 'assert';
 
-import { Suite, Test, BeforeAll } from '@travetto/test';
+import { Suite, Test, BeforeAll, AfterAll } from '@travetto/test';
 import { DependencyRegistry } from '@travetto/di';
 import { TodoService } from '../src/service';
-import { ModelRegistry } from '@travetto/model';
+import { ModelRegistry, ModelSource } from '@travetto/model';
 import { SchemaRegistry } from '@travetto/schema';
 
 import { Todo } from '../src/model';
+import { ModelMongoSource } from '@travetto/model-mongo';
 
 @Suite()
 export class TodoTest {
@@ -18,6 +19,12 @@ export class TodoTest {
     await DependencyRegistry.init();
     await ModelRegistry.init();
     await SchemaRegistry.init();
+  }
+
+  @AfterAll()
+  async destroy() {
+    const source = await DependencyRegistry.getInstance(ModelSource);
+    await (source as ModelMongoSource).resetDatabase();
   }
 
   @Test('Create todo')

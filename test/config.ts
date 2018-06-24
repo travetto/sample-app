@@ -6,7 +6,9 @@ import { QueryVerifierService } from '@travetto/model/src/service/query';
 export class TestConfig {
   @InjectableFactory()
   static testSource(): ModelSource {
-    return new ModelMongoSource(new ModelMongoConfig());
+    return new ModelMongoSource(ModelMongoConfig.from({
+      namespace: `test-${Math.trunc(Math.random() * 10000)}`
+    }));
   }
 
   @InjectableFactory()
