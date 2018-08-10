@@ -14,7 +14,7 @@
     "@travetto/express": "^0.2.0",
     "@travetto/model": "^0.2.0",
     "@travetto/model-mongo": "^0.2.0",
-    "@travetto/test": "^0.2.0",
-    "@travetto/swagger": "^0.2.0"
+    "@travetto/swagger": "^0.2.2",
+    "@travetto/test": "^0.2.0"
   }
 }

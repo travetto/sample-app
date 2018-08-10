@@ -6,4 +6,5 @@ export class Todo implements ModelCore {
   text: string;
   created?: Date;
   completed?: boolean;
+  priority: number;
 }
