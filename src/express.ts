@@ -1,14 +1,17 @@
 import { Request } from 'express';
 
 import { Controller, Get, TypedBody, Post, Put, Delete } from '@travetto/express';
-import { SchemaBody } from '@travetto/express/support/extension.schema';
+import { Inject } from '@travetto/di';
+import { SchemaBody } from '@travetto/schema/extension/express';
 
 import { TodoService } from './service';
 import { Todo } from './model';
 
 @Controller('/todo')
 export class TodoController {
-  constructor(private svc: TodoService) { }
+
+  @Inject()
+  private svc: TodoService;
 
   @Get('/')
   async getAll() {

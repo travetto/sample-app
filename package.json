@@ -4,16 +4,17 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/travetto-test",
-    "start": "./node_modules/.bin/travetto"
+    "start": "./node_modules/.bin/travetto -Pexpress"
   },
   "author": "",
   "license": "ISC",
   "keywords": [],
   "description": "",
   "dependencies": {
-    "@travetto/express": "0.0.25",
-    "@travetto/model": "0.0.37",
-    "@travetto/model-mongo": "0.0.17",
-    "@travetto/test": "0.0.78"
+    "@travetto/express": "^0.2.0",
+    "@travetto/model": "^0.2.0",
+    "@travetto/model-mongo": "^0.2.0",
+    "@travetto/test": "^0.2.0",
+    "@travetto/swagger": "^0.2.0"
   }
 }
