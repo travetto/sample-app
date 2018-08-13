@@ -1,10 +1,11 @@
 {
-  "name": "todo-app",
+  "name": "@travetto/todo-app",
+  "private": true,
   "version": "0.2.0",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/travetto-test",
-    "start": "./node_modules/.bin/travetto -Pexpress"
+    "test": "npx travetto-test",
+    "start": "npx travetto todo"
   },
   "author": "",
   "license": "ISC",

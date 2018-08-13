@@ -3,22 +3,19 @@ import * as assert from 'assert';
 import { Suite, Test, BeforeAll, AfterAll } from '@travetto/test';
 import { DependencyRegistry } from '@travetto/di';
 import { TodoService } from '../src/service';
-import { ModelRegistry, ModelSource } from '@travetto/model';
-import { SchemaRegistry } from '@travetto/schema';
+import { ModelSource } from '@travetto/model';
 import { ModelMongoSource } from '@travetto/model-mongo';
 
 import { Todo } from '../src/model';
+import { RootRegistry } from '@travetto/registry';
 
 @Suite()
 export class TodoTest {
 
   @BeforeAll()
   async init() {
-    await import('./config');
-
-    await DependencyRegistry.init();
-    await ModelRegistry.init();
-    await SchemaRegistry.init();
+    require('./config');
+    await RootRegistry.init();
   }
 
   @AfterAll()
