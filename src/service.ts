@@ -1,6 +1,6 @@
 import { ModelService } from '@travetto/model';
 import { Injectable, Inject } from '@travetto/di';
-import { Todo } from './model';
+import { Todo, TodoSearch } from './model';
 
 @Injectable()
 export class TodoService {
@@ -18,8 +18,8 @@ export class TodoService {
     return this.modelService.getById(Todo, id);
   }
 
-  async getAll() {
-    return this.modelService.getAllByQuery(Todo, {});
+  async getAll(search: TodoSearch) {
+    return this.modelService.getAllByQuery(Todo, search);
   }
 
   async complete(id: string, completed = true) {

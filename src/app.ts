@@ -1,10 +1,17 @@
-import { Application, Inject } from '@travetto/di';
-import { ExpressApp } from '@travetto/express';
+import { Application, Inject, InjectableFactory } from '@travetto/di';
+import { RestApp, RestAppProvider } from '@travetto/rest';
+import { ExpressAppProvider } from '@travetto/rest-express';
 
 @Application('todo')
 export class TodoApp {
+
+  @InjectableFactory()
+  static appProvider(): RestAppProvider {
+    return new ExpressAppProvider();
+  }
+
   @Inject()
-  express: ExpressApp;
+  express: RestApp;
 
   run() {
     this.express.run();

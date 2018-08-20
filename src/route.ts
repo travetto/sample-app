@@ -1,11 +1,9 @@
-import { Request } from 'express';
-
-import { Controller, Get, TypedBody, Post, Put, Delete } from '@travetto/express';
+import { Controller, Get, TypedBody, Post, Put, Delete, Request, TypedQuery } from '@travetto/rest';
 import { Inject } from '@travetto/di';
-import { SchemaBody } from '@travetto/schema/extension/express';
+import { SchemaBody, SchemaQuery } from '@travetto/schema/extension/rest';
 
 import { TodoService } from './service';
-import { Todo } from './model';
+import { Todo, TodoSearch } from './model';
 
 @Controller('/todo')
 export class TodoController {
@@ -17,8 +15,9 @@ export class TodoController {
    * Get all todos
    */
   @Get('/')
-  async getAll(): Promise<Todo[]> {
-    return this.svc.getAll();
+  @SchemaQuery(TodoSearch)
+  async getAll(req: TypedQuery<TodoSearch>): Promise<Todo[]> {
+    return this.svc.getAll(req.query);
   }
 
   /**
