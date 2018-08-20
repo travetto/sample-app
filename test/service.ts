@@ -1,13 +1,13 @@
 import * as assert from 'assert';
 
+import { RootRegistry } from '@travetto/registry';
 import { Suite, Test, BeforeAll, AfterAll } from '@travetto/test';
 import { DependencyRegistry } from '@travetto/di';
-import { TodoService } from '../src/service';
 import { ModelSource } from '@travetto/model';
 import { ModelMongoSource } from '@travetto/model-mongo';
 
 import { Todo } from '../src/model';
-import { RootRegistry } from '@travetto/registry';
+import { TodoService } from '../src/service';
 
 @Suite()
 export class TodoTest {
