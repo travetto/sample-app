@@ -1,22 +1,22 @@
 {
   "name": "@travetto/todo-app",
   "private": true,
-  "version": "0.2.3",
+  "version": "0.3.0",
   "main": "index.js",
   "scripts": {
-    "test": "npx travetto-test",
-    "start": "npx travetto todo"
+    "test": "npx travetto test 'test.*'",
+    "start": "npx travetto run todo"
   },
   "author": "",
   "license": "ISC",
   "keywords": [],
   "description": "",
   "dependencies": {
-    "@travetto/model": "^0.2.6",
-    "@travetto/model-mongo": "^0.2.6",
-    "@travetto/rest": "^0.2.6",
-    "@travetto/rest-express": "^0.2.6",
-    "@travetto/swagger": "^0.2.8",
-    "@travetto/test": "^0.2.4"
+    "@travetto/rest": "^0.3.0",
+    "@travetto/rest-aws-lambda": "^0.3.0",
+    "@travetto/model": "^0.3.0",
+    "@travetto/model-mongo": "^0.3.0",
+    "@travetto/swagger": "^0.3.0",
+    "@travetto/test": "^0.3.0"
   }
 }

@@ -1,18 +1,19 @@
-import { Application, InjectableFactory } from '@travetto/di';
+import { Application, Inject, InjectableFactory } from '@travetto/di';
 import { RestApp, RestAppProvider } from '@travetto/rest';
-import { ExpressAppProvider } from '@travetto/rest-express';
+import { AwsLambdaAppProvider } from '@travetto/rest-aws-lambda';
 
 @Application('todo')
 export class TodoApp {
 
   @InjectableFactory()
   static appProvider(): RestAppProvider {
-    return new ExpressAppProvider();
+    return new AwsLambdaAppProvider();
   }
 
-  constructor(private app: RestApp) { }
+  @Inject()
+  express: RestApp;
 
   run() {
-    this.app.run();
+    this.express.run();
   }
 }
