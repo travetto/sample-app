@@ -1,10 +1,10 @@
 import { InjectableFactory } from '@travetto/di';
-import { ModelMongoSource, ModelMongoConfig } from '@travetto/model-mongo';
+import { ModelElasticsearchSource, ModelElasticsearchConfig } from '@travetto/model-elasticsearch';
 import { ModelSource } from '@travetto/model';
 
 export class AppConfig {
   @InjectableFactory()
-  static getDataSource(config: ModelMongoConfig): ModelSource {
-    return new ModelMongoSource(config);
+  static getDataSource(config: ModelElasticsearchConfig): ModelSource {
+    return new ModelElasticsearchSource(config);
   }
 }
