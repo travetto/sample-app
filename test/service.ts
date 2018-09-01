@@ -65,6 +65,7 @@ export class TodoTest {
 
     const saved = await svc.add(test);
     assert.ok(saved.id);
+    assert(test.text === 'Sample Task');
 
     await svc.remove(saved.id!);
 
