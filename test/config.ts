@@ -1,18 +1,11 @@
 import { InjectableFactory } from '@travetto/di';
-import { ModelSource, ModelService } from '@travetto/model';
-import { ModelMongoSource, ModelMongoConfig } from '@travetto/model-mongo';
-import { QueryVerifierService } from '@travetto/model/src/service/query';
+import { ModelSource } from '@travetto/model';
+import { ModelElasticsearchSource, ModelElasticsearchConfig } from '@travetto/model-elasticsearch';
 
 export class TestConfig {
-  @InjectableFactory()
-  static testSource(): ModelSource {
-    return new ModelMongoSource(ModelMongoConfig.from({
-      namespace: `test-${Math.trunc(Math.random() * 10000)}`
-    }));
-  }
 
   @InjectableFactory()
-  static modelService(src: ModelSource): ModelService {
-    return new ModelService(src, new QueryVerifierService());
+  static testSource(config: ModelElasticsearchConfig): ModelSource {
+    return new ModelElasticsearchSource(config);
   }
 }

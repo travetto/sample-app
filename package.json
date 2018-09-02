@@ -12,10 +12,10 @@
   "keywords": [],
   "description": "",
   "dependencies": {
-    "@travetto/rest": "^0.3.0",
-    "@travetto/rest-aws-lambda": "^0.3.0",
     "@travetto/model": "^0.3.0",
     "@travetto/model-elasticsearch": "^0.3.0",
+    "@travetto/rest": "^0.3.0",
+    "@travetto/rest-aws-lambda": "^0.3.0",
     "@travetto/swagger": "^0.3.0",
     "@travetto/test": "^0.3.0"
   }

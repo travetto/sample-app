@@ -4,24 +4,26 @@ import { Suite, Test, BeforeAll, AfterAll } from '@travetto/test';
 import { DependencyRegistry } from '@travetto/di';
 import { TodoService } from '../src/service';
 import { ModelSource } from '@travetto/model';
-import { ModelMongoSource } from '@travetto/model-mongo';
+import { ModelElasticsearchSource, ModelElasticsearchConfig } from '@travetto/model-elasticsearch';
 import { RootRegistry } from '@travetto/registry';
 
 import { Todo } from '../src/model';
+
+require('./config');
 
 @Suite()
 export class TodoTest {
 
   @BeforeAll()
   async init() {
-    require('./config');
     await RootRegistry.init();
+    await DependencyRegistry.init();
   }
 
   @AfterAll()
   async destroy() {
     const source = await DependencyRegistry.getInstance(ModelSource);
-    await (source as ModelMongoSource).resetDatabase();
+    await (source as ModelElasticsearchSource).resetDatabase();
   }
 
   @Test('Create todo')
