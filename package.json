@@ -12,7 +12,7 @@
   "keywords": [],
   "description": "",
   "dependencies": {
-    "@travetto/log": "^0.3.6",
+    "@travetto/log": "^0.3.9",
     "@travetto/model": "^0.3.0",
     "@travetto/model-elasticsearch": "^0.3.0",
     "@travetto/rest": "^0.3.0",
