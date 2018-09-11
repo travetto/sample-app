@@ -23,9 +23,8 @@ export class TodoService {
   }
 
   async complete(id: string, completed = true) {
-    return this.modelService.updatePartialByQuery(Todo,
-      { where: { id } },
-      { completed }
+    return this.modelService.updatePartial(Todo,
+      { id, completed }
     );
   }
 
