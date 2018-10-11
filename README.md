@@ -138,10 +138,7 @@ export class TodoService {
 ```
 
 ## Writing unit tests
-After we have established our service layer, we will now construct
-some simple tests to verify the service layer is running correctly.
-
-First we need to initialize the testing configuration as the config in the `src/` folder is not automatically scanned.
+After we have established our service layer, we will now construct some simple tests to verify the service layer is running correctly. First we need to initialize the testing configuration as the config in the `src/` folder is not automatically scanned.
 
 Create the new test config at `test/config.ts`
 ```typescript
