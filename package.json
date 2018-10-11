@@ -16,7 +16,6 @@
     "@travetto/model": "^0.3.0",
     "@travetto/model-elasticsearch": "^0.3.0",
     "@travetto/rest": "^0.3.0",
-    "@travetto/rest-aws-lambda": "^0.3.0",
     "@travetto/rest-express": "^0.3.6",
     "@travetto/swagger": "^0.3.0",
     "@travetto/test": "^0.3.0"

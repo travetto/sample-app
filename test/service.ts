@@ -8,8 +8,7 @@ import { ModelElasticsearchSource, ModelElasticsearchConfig } from '@travetto/mo
 import { RootRegistry } from '@travetto/registry';
 
 import { Todo } from '../src/model';
-
-require('./config');
+import './config';
 
 @Suite()
 export class TodoTest {
@@ -17,13 +16,12 @@ export class TodoTest {
   @BeforeAll()
   async init() {
     await RootRegistry.init();
-    await DependencyRegistry.init();
   }
 
   @AfterAll()
   async destroy() {
     const source = await DependencyRegistry.getInstance(ModelSource);
-    await (source as ModelElasticsearchSource).resetDatabase();
+    (source as ModelElasticsearchSource).resetDatabase();
   }
 
   @Test('Create todo')
