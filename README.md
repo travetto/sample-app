@@ -25,6 +25,7 @@ Install
 
 ## Project initialization
 
+**Install: Getting Ready**
 ```bash
 $ mkdir todo-project
 $ cd todo-project
@@ -36,6 +37,8 @@ $ npm i @travetto/{log,test,rest-express,model-mongo}
 ```
 
 Set `tsconfig.json` to the following:
+
+**Config: Setting up tsconfig.json**
 ```json
 {
     "extends": "./node_modules/@travetto/base/tsconfig.json"
@@ -43,6 +46,8 @@ Set `tsconfig.json` to the following:
 ```
 
 And set `tslint.json` to the following:
+
+**Config: Setting up tslint.json**
 ```json
 {
   "extends": "@travetto/base/tslint.json"
@@ -57,6 +62,8 @@ Let's create the model for the todo application.  The fields we will need should
 * `completed` whether or not the todo was completed
 
 Create the file `src/model.ts`
+
+**Code: Models, src/model.ts**
 ```typescript
 import { Model, ModelCore } from '@travetto/model';
 
@@ -80,6 +87,8 @@ as you can see, the model structure is simple.  Everything that uses the `Model`
 Next we need to prepare the `MongoModelSource` to be used at runtime.
 
 We need to create `src/config.ts`
+
+**Code: Configuration, src/config.ts**
 ```typescript
 import { InjectableFactory } from '@travetto/di';
 import { ModelMongoSource, ModelMongoConfig } from '@travetto/model-mongo';
@@ -103,6 +112,8 @@ Next we establish the functionality for the service layer. The operations we nee
 * Get all todos
 
 Now we need to create `src/service.ts`
+
+**Code: Service Definition, src/service.ts**
 ```typescript
 import { ModelService } from '@travetto/model';
 import { Injectable, Inject } from '@travetto/di';
@@ -141,6 +152,8 @@ export class TodoService {
 After we have established our service layer, we will now construct some simple tests to verify the service layer is running correctly. First we need to initialize the testing configuration as the config in the `src/` folder is not automatically scanned.
 
 Create the new test config at `test/config.ts`
+
+**Code: Test configuration, test/config.ts**
 ```typescript
 import { InjectableFactory } from '@travetto/di';
 import { ModelSource, ModelService } from '@travetto/model';
@@ -163,6 +176,8 @@ export class TestConfig {
 ```
 
 The tests should be defined at `test/service.ts`
+
+**Code: Test bed, test/service.ts**
 ```typescript
 import * as assert from 'assert';
 
@@ -243,6 +258,8 @@ export class TodoTest {
 Now we establish the routes, providing an interface to the service layer.
 
 Finally, we establish the controller at `src/controller.ts`
+
+**Code: Controller contents, src/controller.ts**
 ```typescript
 import { Controller, Get, TypedBody, Post, Put, Delete, Request, TypedQuery } from '@travetto/rest';
 import { Inject } from '@travetto/di';
@@ -308,6 +325,8 @@ export class TodoController {
 Finally, to pull all of this together, we need to launch the application entry point.  This requires us to use the `@Application` decorator to identify a class as an entry-point for the application.  Any application can have multiple entry-points.
 
 The entry-point should be at `src/app.ts` as:
+
+**Code: Application entry point, src/app.ts**
 ```typescript
 import { Application, InjectableFactory } from '@travetto/di';
 import { RestApp, RestAppProvider } from '@travetto/rest';
@@ -332,6 +351,7 @@ export class TodoApp {
 ## Test the final product
 First we must start the application
 
+**Terminal: Output of application startup**
 ```bash
 $ npx travetto todo
 DEBUG Initializing Phase bootstrap [ 'schema', 'base', 'log', 'config', 'compiler', 'registry' ]
@@ -393,6 +413,7 @@ express-session deprecated undefined saveUninitialized option; provide saveUnini
 
 next, let's execute `curl` requests to interact with the new api
 
+**Terminal: Creating todo by curl, and then fetching**
 ```bash
 # Let's create a new todo
 $ curl -XPOST localhost:3000/todo -H 'Content-Type: application/json' -d '{ "text": "New Todo" }' 
